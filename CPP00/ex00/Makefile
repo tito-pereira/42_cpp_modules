@@ -24,8 +24,8 @@ RM= rm -rf
 SRC= megaphone.cpp
 OBJ= ${SRC:.c=.o}
 
-$(NAME):
-	$(CPP) $(CFLAGS) $(CPPSTD) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CPP) $(CFLAGS) $(CPPSTD) $(OBJ) -o $(NAME)
 
 all: $(NAME)
 
