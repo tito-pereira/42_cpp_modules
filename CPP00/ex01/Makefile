@@ -22,10 +22,10 @@ RM= rm -rf
 
 # Source && Object files
 SRC= ./src/PhoneBook.cpp ./src/Contact.cpp ./src/main.cpp
-OBJ= ${SRC:.c=.o}
+OBJ= ${SRC:.cpp=.o}
 
 $(NAME):
-	$(CPP) $(CFLAGS) $(CPPSTD) -o $(NAME)
+	$(CPP) $(CFLAGS) $(CPPSTD) $(SRC) -o $(NAME)
 
 all: $(NAME)
 
