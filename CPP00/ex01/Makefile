@@ -21,7 +21,7 @@ CPPSTD= -std=c++98
 RM= rm -rf
 
 # Source && Object files
-SRC= megaphone.cpp
+SRC= ./src/PhoneBook.cpp ./src/Contact.cpp ./src/main.cpp
 OBJ= ${SRC:.c=.o}
 
 $(NAME):

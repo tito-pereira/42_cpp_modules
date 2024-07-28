@@ -15,17 +15,21 @@
 
 #include <iostream>
 
-class Contact {
-private:
-    char	*first_name;
+namespace	PersonInfo {
+	char	*first_name;
     char	*last_name;
 	char	*nickname;
 	char	*number;
 	char	*secret;
+}
+
+class Contact {
+private:
+    static PersonInfo	p_info;
 	Contact();
 	~Contact();
 public:
-    change_info(char *s1, char *s2, char *s3, char *s4, char *s5);
+    static void	change_info(PersonInfo new_info);
 };
 
 #endif

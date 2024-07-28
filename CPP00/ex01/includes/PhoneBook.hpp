@@ -16,13 +16,15 @@
 #include <iostream>
 #include "Contact.hpp"
 
-class PhoneBook
-{
+class PhoneBook {
 private:
     Contact contact_lst[8];
-public:
     PhoneBook();
     ~PhoneBook();
+public:
+    void    add_person(PersonInfo p_info);
+    void    search_all();
+    int     search_one(int index);
 };
 
 #endif
