@@ -22,10 +22,10 @@ RM= rm -rf
 
 # Source && Object files
 SRC= megaphone.cpp
-OBJ= ${SRC:.c=.o}
+OBJ= ${SRC:.cpp=.o}
 
 $(NAME): $(OBJ)
-	$(CPP) $(CFLAGS) $(CPPSTD) $(OBJ) -o $(NAME)
+	$(CPP) $(CFLAGS) $(CPPSTD) $(SRC) -o $(NAME)
 
 all: $(NAME)
 

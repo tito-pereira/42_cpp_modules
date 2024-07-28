@@ -26,9 +26,9 @@ namespace	PersonInfo {
 class Contact {
 private:
     static PersonInfo	p_info;
+public:
 	Contact();
 	~Contact();
-public:
     static void	change_info(PersonInfo new_info);
 };
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "../includes/Contact.hpp"
 
 Contact::Contact() : p_info::first_name(nullptr), p_info::last_name(nullptr),
 p_info::nickname(nullptr), p_info::number(nullptr), p_info::secret(nullptr) {}

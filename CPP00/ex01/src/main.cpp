@@ -27,7 +27,7 @@ int	my_strcmp(char *s1, char *s2) {
 
 void	main_add(PhoneBook phone_bk) {
 	char		*input;
-	PersonInfo p_info;
+	PersonInfo	p_info;
 	std::cout << "first name" << std::endl;
 	std::cin >> input;
 	p_info::first_name = input;
