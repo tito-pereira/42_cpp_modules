@@ -18,26 +18,26 @@ PhoneBook::~PhoneBook() {}
 
 void	Phonebook::add_person(PersonInfo p_info) {
 	for (int i = 6; i >= 0; i--) {
-		if (PhoneBook::contact_lst[i]::first_name)
-			PhoneBook::contact_lst[i + 1] = PhoneBook::contact_lst[i];
+		if (this->contact_lst[i].first_name)
+			this->contact_lst[i + 1] = this->contact_lst[i];
 	}
-	PhoneBook::contact_lst[0]::change_info(p_info);
+	this->contact_lst[0].change_info(p_info);
 }
 
 int	PhoneBook::search_one(int index) {
-	if (!PhoneBook::contact_lst[index]::first_name)
+	if (!this->contact_lst[index].first_name)
 		return 0;
 	else {
 		std::cout << "First Name:" << std::endl;
-		std::cout << PhoneBook::contact_lst[index]::first_name << std::endl;
+		std::cout << this->contact_lst[index].first_name << std::endl;
 		std::cout << "Last Name:" << std::endl;
-		std::cout << PhoneBook::contact_lst[index]::last_name << std::endl;
+		std::cout << this->contact_lst[index].last_name << std::endl;
 		std::cout << "Nickname:" << std::endl;
-		std::cout << PhoneBook::contact_lst[index]::nickname << std::endl;
+		std::cout << this->contact_lst[index].nickname << std::endl;
 		std::cout << "Phone Number:" << std::endl;
-		std::cout << PhoneBook::contact_lst[index]::number << std::endl;
+		std::cout << this->contact_lst[index].number << std::endl;
 		std::cout << "Darkest Secret:" << std::endl;
-		std::cout << PhoneBook::contact_lst[index]::secret << std::endl;
+		std::cout << this->contact_lst[index].secret << std::endl;
 	}
 	return 1;
 }
@@ -70,7 +70,7 @@ void	column_writer(int *count, char *str) {
 void	PhoneBook::search_all() {
 	std::cout << "Index     |First Name|Last Name |Nickname  |" << std::endl;
 	int	f = 0, l = 0, n = 0, done_flag = 0, iter = 0;
-	for (int i = 0; PhoneBook::contact_lst[i]::first_name; i++) {
+	for (int i = 0; this->contact_lst[i].first_name; i++) {
 		all_zeros(&f, &l, &n, &done_flag; &iter);
 		while (done_flag != 1) {
 			for (int j = 0; j < 10; j++) {
@@ -80,11 +80,11 @@ void	PhoneBook::search_all() {
 					std::cout << ' ' << std::flush;
 			}
 			std::cout << '|' << std::flush;
-			column_writer(&f, PhoneBook::contact_lst[i]::first_name);
+			column_writer(&f, this->contact_lst[i].first_name);
 			std::cout << '|' << std::flush;
-			column_writer(&l, PhoneBook::contact_lst[i]::last_name);
+			column_writer(&l, this->contact_lst[i].last_name);
 			std::cout << '|' << std::flush;
-			column_writer(&n, PhoneBook::contact_lst[i]::nickname);
+			column_writer(&n, this->contact_lst[i].nickname);
 			std::cout << '|' << std::endl;
 			iter++;
 			if (f == -1 && l == -1 && n == -1)

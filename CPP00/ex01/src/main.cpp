@@ -30,20 +30,20 @@ void	main_add(PhoneBook phone_bk) {
 	PersonInfo	p_info;
 	std::cout << "first name" << std::endl;
 	std::cin >> input;
-	p_info::first_name = input;
+	p_info.first_name = input;
 	std::cout << "last name" << std::endl;
 	std::cin >> input;
-	p_info::last_name = input;
+	p_info.last_name = input;
 	std::cout << "nickname" << std::endl;
 	std::cin >> input;
-	p_info::nickname = input;
+	p_info.nickname = input;
 	std::cout << "number" << std::endl;
 	std::cin >> input;
-	p_info::number = input;
+	p_info.number = input;
 	std::cout << "secret" << std::endl;
 	std::cin >> input;
-	p_info::secret = input;
-	phone_bk::add_person(p_info);
+	p_info.secret = input;
+	phone_bk.add_person(p_info);
 }
 
 void	main_search(PhoneBook phone_bk) {
@@ -51,7 +51,7 @@ void	main_search(PhoneBook phone_bk) {
 	std::cout << "type index from 0 to 8:" << std::endl;
 	std::cin >> index;
 	if (valid_index(index) != -1)
-		phone_bk::search_info(valid_index(index));
+		phone_bk.search_info(valid_index(index));
 	else
 		std::cout << "Invalid index." << std::endl;
 }

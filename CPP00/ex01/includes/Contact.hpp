@@ -15,21 +15,21 @@
 
 #include <iostream>
 
-namespace	PersonInfo {
+typedef	struct	PeopleInfo {
 	char	*first_name;
     char	*last_name;
 	char	*nickname;
 	char	*number;
 	char	*secret;
-}
+}	PersonInfo;
 
 class Contact {
 private:
-    static PersonInfo	p_info;
+    PersonInfo	p_info;
 public:
 	Contact();
 	~Contact();
-    static void	change_info(PersonInfo new_info);
+    void	change_info(PersonInfo new_info);
 };
 
 #endif
