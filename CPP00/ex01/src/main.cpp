@@ -14,7 +14,7 @@
 #include "../includes/Contact.hpp"
 #include "../includes/PhoneBook.hpp"
 
-int	my_strcmp(char *s1, char *s2) {
+int	my_strcmp(char *s1, const char *s2) {
 	int	i = -1;
 	while (s1[++i]) {
 		if (!s2[i] || s1[i] != s2[i])
@@ -26,7 +26,7 @@ int	my_strcmp(char *s1, char *s2) {
 }
 
 void	main_add(PhoneBook phone_bk) {
-	char		*input;
+	char		*input = NULL;
 	PersonInfo	p_info;
 	std::cout << "first name" << std::endl;
 	std::cin >> input;
@@ -47,19 +47,19 @@ void	main_add(PhoneBook phone_bk) {
 }
 
 void	main_search(PhoneBook phone_bk) {
-	char	*index;
+	char	*index = NULL;
 	std::cout << "type index from 0 to 8:" << std::endl;
 	std::cin >> index;
-	if (valid_index(index) != -1)
-		phone_bk.search_info(valid_index(index));
-	else
+	if (index[1] || (index[0] && index[0] < '0' && index[0] > '7'))
 		std::cout << "Invalid index." << std::endl;
+	else
+		phone_bk.search_one((int)index[0]);
 }
 
 void    cmd_central(PhoneBook phone_bk, char *input) {
     if (my_strcmp(input, "ADD") == 1)
         main_add(phone_bk);
-    else if (my_strcnmp(input, "SEARCH") == 1)
+    else if (my_strcmp(input, "SEARCH") == 1)
         main_search(phone_bk);
 	else
 		std::cout << "Invalid command." << std::endl;
@@ -67,15 +67,15 @@ void    cmd_central(PhoneBook phone_bk, char *input) {
 
 int main() {
     static	PhoneBook   phone_bk;
-    char        		*input;
+    char        		*input = NULL;
     while (1) {
         std::cout << "--------------- My Awesome Phonebook ---------------" << std::endl;
         std::cout << "Type, in capital letters, the command to run next:" << std::endl;
         std::cout << "ADD\nSEARCH\nEXIT" << std::endl;
         std::cin >> input;
         if (my_strcmp(input, "EXIT") == 1)
-            exit(EXIT_SUCCESS);
+            return 0;
         else
-            cmd_central(phone_bk);
+            cmd_central(phone_bk, input);
     }
 }

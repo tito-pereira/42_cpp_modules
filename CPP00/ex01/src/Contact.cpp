@@ -12,8 +12,13 @@
 
 #include "../includes/Contact.hpp"
 
-Contact::Contact() : p_info::first_name(nullptr), p_info::last_name(nullptr),
-p_info::nickname(nullptr), p_info::number(nullptr), p_info::secret(nullptr) {}
+Contact::Contact() {
+    p_info.first_name = NULL;
+    p_info.last_name = NULL;
+    p_info.nickname = NULL;
+    p_info.number = NULL;
+    p_info.secret = NULL;
+}
 
 Contact::~Contact() {}
 
