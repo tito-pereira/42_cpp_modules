@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/27 17:21:34 by marvin            #+#    #+#              #
-#    Updated: 2024/07/27 17:21:34 by marvin           ###   ########.fr        #
+#    Created: 2024/07/31 00:43:13 by marvin            #+#    #+#              #
+#    Updated: 2024/07/31 00:43:13 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= phonebook
+NAME= zombie
 
 # Compilation
 CPP= c++
@@ -21,7 +21,7 @@ CPPSTD= -std=c++98
 RM= rm -rf
 
 # Source && Object files
-SRC= ./src/PhoneBook.cpp ./src/Contact.cpp ./src/main.cpp
+SRC= ./main.cpp ./Zombie.cpp
 OBJDIR= ./obj
 OBJ= ${SRC:%.cpp=$(OBJDIR)/%.o}
 

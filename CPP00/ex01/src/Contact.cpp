@@ -13,11 +13,11 @@
 #include "../includes/Contact.hpp"
 
 Contact::Contact() {
-    p_info.first_name = NULL;
-    p_info.last_name = NULL;
-    p_info.nickname = NULL;
-    p_info.number = NULL;
-    p_info.secret = NULL;
+    this->p_info.first_name = "";
+    this->p_info.last_name = "";
+    this->p_info.nickname = "";
+    this->p_info.number = "";
+    this->p_info.secret = "";
 }
 
 Contact::~Contact() {}

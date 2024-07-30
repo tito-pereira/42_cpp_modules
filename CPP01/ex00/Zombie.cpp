@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 17:27:08 by marvin            #+#    #+#             */
-/*   Updated: 2024/07/27 17:27:08 by marvin           ###   ########.fr       */
+/*   Created: 2024/07/31 00:43:45 by marvin            #+#    #+#             */
+/*   Updated: 2024/07/31 00:43:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-#define CONTACT_H
+#include "Zombie.hpp"
 
-#include <iostream>
+Zombie::Zombie(false) : flag(false) {}
 
-typedef	struct	PeopleInfo {
-	std::string	first_name;
-    std::string	last_name;
-	std::string	nickname;
-	std::string	number;
-	std::string	secret;
-}	PersonInfo;
+Zombie::~Zombie() {
+	std::cout << "will die now" << name << std::endl;
+	if (flag == true)
+		delete this->name;
+}
 
-class Contact {
-public:
-	PersonInfo	p_info;
-	Contact();
-	~Contact();
-    void	change_info(PersonInfo new_info);
-};
+void	Zombie::announce(void) {
+	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-#endif
+void	Zombie::change_name(std::string new_name) {
+	this->name = new_name;
+}

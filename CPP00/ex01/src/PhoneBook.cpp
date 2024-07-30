@@ -18,18 +18,18 @@ PhoneBook::~PhoneBook() {}
 
 void    PhoneBook::add_person(PersonInfo p_info) {
 	for (int i = 6; i >= 0; i--) {
-		if (this->contact_lst[i].p_info.first_name)
+		if (!this->contact_lst[i].p_info.first_name.empty())
 			this->contact_lst[i + 1] = this->contact_lst[i];
 	}
 	this->contact_lst[0].change_info(p_info);
 }
 
 int	PhoneBook::search_one(int index) {
-	//if (this->contact_lst[index].p_info.first_name) ///
-		//std::cout << "why does this exist?" <<std::endl; ///
-	char	*check = this->contact_lst[index].p_info.first_name;
-	if (!check)
+	if (this->contact_lst[index].p_info.first_name.empty()
+		|| !(index >= 0 && index <= 7)) {
+		std::cout << "Non-existent contact." << std::endl;
 		return 0;
+		}
 	else {
 		std::cout << "First Name:" << std::endl;
 		std::cout << this->contact_lst[index].p_info.first_name << std::endl;
@@ -45,30 +45,24 @@ int	PhoneBook::search_one(int index) {
 	return 1;
 }
 
-/*
-olha nao sei crl
-ou uso std::string e .empty()
-ou nao sei pqp a merda desta linguagem
-*/
-
 void	all_zeros(int *f, int *l, int *n, int *done_flag, int *iter) {
-	*f = 0;
-	*l = 0;
-	*n = 0;
+	*f = -1;
+	*l = -1;
+	*n = -1;
 	*done_flag = 0;
 	*iter = 0;
 }
 
-void	column_writer(int *count, char *str) {
+void	column_writer(int *count, std::string str) {
 	for (int i = 0; i < 10; i++) {
-		if ((*count) != -1) {
+		if ((*count) != -2) {
 			if (str[++(*count)] && i < 9)
 				std::cout << str[*count] << std::flush;
 			else if (str[*count] && str[*count] && i == 9)
 				std::cout << '.' << std::flush;
 			else {
 				std::cout << ' ' << std::flush;
-				(*count) = -1;
+				(*count) = -2;
 			}
 		}
 		else
@@ -78,13 +72,16 @@ void	column_writer(int *count, char *str) {
 
 void	PhoneBook::search_all() {
 	std::cout << "Index     |First Name|Last Name |Nickname  |" << std::endl;
-	int	f = 0, l = 0, n = 0, done_flag = 0, iter = 0;
-	for (int i = 0; this->contact_lst[i].p_info.first_name; i++) {
+	int	f = 0, l = 0, n = 0, done_flag = 0, iter = 0, total = -1;
+	while (!this->contact_lst[++total].p_info.first_name.empty())
+		continue;
+	total--;
+	for (int i = 0; i <= total; i++) {
 		all_zeros(&f, &l, &n, &done_flag, &iter);
 		while (done_flag != 1) {
 			for (int j = 0; j < 10; j++) {
 				if (j == 4 && iter == 0)
-					std::cout << j << std::flush;
+					std::cout << i << std::flush;
 				else
 					std::cout << ' ' << std::flush;
 			}
@@ -96,35 +93,8 @@ void	PhoneBook::search_all() {
 			column_writer(&n, this->contact_lst[i].p_info.nickname);
 			std::cout << '|' << std::endl;
 			iter++;
-			if (f == -1 && l == -1 && n == -1)
+			if (f == -2 && l == -2 && n == -2)
 				done_flag = 1;
 		}
 	}
 }
-
-/*
-Display the saved contacts as a list of 4 columns: index, first name, last
-name and nickname.
-◦ Each column must be 10 characters wide. A pipe character (’|’) separates
-them. The text must be right-aligned. If the text is longer than the column,
-it must be truncated and the last displayable character must be replaced by a
-dot (’.’).
-
--> right aligned?
-#include <cstdlib> // For std::getenv
-#include <iomanip> // For std::setw
-
--> substituir :: por . naquelas triple access
-
-for (int b = 0; b < 10; b++) {
-	if (PhoneBook::contact_lst[i]::first_name[b] && b < 9)
-		std::cout << PhoneBook::contact_lst[i]::first_name[b] << std::flush;
-	else if (PhoneBook::contact_lst[i]::first_name[b]
-		&& PhoneBook::contact_lst[i]::first_name[b] && b == 9) {
-		std::cout << '.' << std::flush;
-		repeat_flag = 1;
-	}
-	else
-		std::cout << ' ' << std::flush;
-}
-*/

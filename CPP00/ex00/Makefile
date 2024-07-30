@@ -29,7 +29,7 @@ OBJ= $(SRC:%.cpp=$(OBJDIR)/%.o)
 
 $(NAME): $(OBJ)
 	@$(CPP) $(CFLAGS) $(CPPSTD) $(OBJ) -o $(NAME)
-	echo -n "Executable has been compiled\n"
+	@echo -n "Executable has been compiled\n"
 
 $(OBJDIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -39,10 +39,10 @@ all: $(NAME)
 
 clean:
 	@$(RM) $(OBJDIR)
-	echo -n "All objects files and directory cleaned\n"
+	@echo -n "All objects files and directory cleaned\n"
 
 fclean: clean
 	@$(RM) $(NAME)
-	echo -n "All objects files, directory and executable cleaned\n"
+	@echo -n "All objects files, directory and executable cleaned\n"
 
 re: fclean all
