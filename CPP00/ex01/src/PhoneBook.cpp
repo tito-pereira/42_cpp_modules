@@ -25,7 +25,10 @@ void    PhoneBook::add_person(PersonInfo p_info) {
 }
 
 int	PhoneBook::search_one(int index) {
-	if (!this->contact_lst[index].p_info.first_name)
+	//if (this->contact_lst[index].p_info.first_name) ///
+		//std::cout << "why does this exist?" <<std::endl; ///
+	char	*check = this->contact_lst[index].p_info.first_name;
+	if (!check)
 		return 0;
 	else {
 		std::cout << "First Name:" << std::endl;
@@ -41,6 +44,12 @@ int	PhoneBook::search_one(int index) {
 	}
 	return 1;
 }
+
+/*
+olha nao sei crl
+ou uso std::string e .empty()
+ou nao sei pqp a merda desta linguagem
+*/
 
 void	all_zeros(int *f, int *l, int *n, int *done_flag, int *iter) {
 	*f = 0;

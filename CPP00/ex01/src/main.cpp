@@ -26,31 +26,31 @@ int	my_strcmp(char *s1, const char *s2) {
 }
 
 void	main_add(PhoneBook phone_bk) {
-	char		*input = NULL;
+	char		input[4096];
 	PersonInfo	p_info;
-	std::cout << "first name" << std::endl;
+	std::cout << "Type the new contact's first name:" << std::endl;
 	std::cin >> input;
 	p_info.first_name = input;
-	std::cout << "last name" << std::endl;
+	std::cout << "Type the new contact's last name:" << std::endl;
 	std::cin >> input;
 	p_info.last_name = input;
-	std::cout << "nickname" << std::endl;
+	std::cout << "Type the new contact's nickname:" << std::endl;
 	std::cin >> input;
 	p_info.nickname = input;
-	std::cout << "number" << std::endl;
+	std::cout << "Type the new contact's number:" << std::endl;
 	std::cin >> input;
 	p_info.number = input;
-	std::cout << "secret" << std::endl;
+	std::cout << "Type the new contact's darkest secret:" << std::endl;
 	std::cin >> input;
 	p_info.secret = input;
 	phone_bk.add_person(p_info);
 }
 
 void	main_search(PhoneBook phone_bk) {
-	char	*index = NULL;
-	std::cout << "type index from 0 to 8:" << std::endl;
+	char	index[4096];
+	std::cout << "What contact do you wish to see, from index 0 to 7?" << std::endl;
 	std::cin >> index;
-	if (index[1] || (index[0] && index[0] < '0' && index[0] > '7'))
+	if (index[1] || (index[0] && (index[0] < '0' || index[0] > '7')))
 		std::cout << "Invalid index." << std::endl;
 	else
 		phone_bk.search_one((int)index[0]);
@@ -67,12 +67,13 @@ void    cmd_central(PhoneBook phone_bk, char *input) {
 
 int main() {
     static	PhoneBook   phone_bk;
-    char        		*input = NULL;
+    char        		input[4096];
     while (1) {
-        std::cout << "--------------- My Awesome Phonebook ---------------" << std::endl;
+        std::cout << "--------------- Welcome to My Awesome Phonebook ---------------" << std::endl;
         std::cout << "Type, in capital letters, the command to run next:" << std::endl;
         std::cout << "ADD\nSEARCH\nEXIT" << std::endl;
         std::cin >> input;
+		std::cout << "Input received was " << input << std::endl; //
         if (my_strcmp(input, "EXIT") == 1)
             return 0;
         else
