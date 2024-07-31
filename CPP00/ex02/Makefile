@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME= megaphone
+NAME= account
 
 # Compilation
 CPP= c++
@@ -21,18 +21,28 @@ CPPSTD= -std=c++98
 RM= rm -rf
 
 # Source && Object files
-SRC= megaphone.cpp
-OBJ= ${SRC:.c=.o}
+SRC= ./src/Account.cpp ./src/tests.cpp
+OBJDIR= ./obj
+OBJ= ${SRC:%.cpp=$(OBJDIR)/%.o}
 
-$(NAME):
-	$(CPP) $(CFLAGS) $(CPPSTD) -o $(NAME)
+.PHONY: all clean fclean re
+
+$(NAME): $(OBJ)
+	@$(CPP) $(CFLAGS) $(CPPSTD) $(OBJ) -o $(NAME)
+	@echo -n "Executable has been compiled\n"
+
+$(OBJDIR)/%.o: %.cpp
+	@mkdir -p $(dir $@)
+	@$(CPP) $(CFLAGS) $(CPPSTD) -c $< -o $@
 
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJ)
+	@$(RM) $(OBJDIR)
+	@echo -n "All objects files and directory cleaned\n"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo -n "All objects files, directory and executable cleaned\n"
 
 re: fclean all
