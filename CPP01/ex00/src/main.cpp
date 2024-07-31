@@ -10,28 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../include/Zombie.hpp"
 
-Zombie*	newZombie(std::string name) {
-	Zombie	*n_zombie = new Zombie;
-	std::cout << name << std::endl;
-	n_zombie.announce();
-	n_zombie.change_name(name);
-	n_zombie.flag = true;
-	return n_zombie;
+int	main() {
+	std::string	input;
+	std::cout << "You will now test 2 ways of creating zombies"<< std::endl;
+	std::cout << "Please type a name for a zombie:" << std::endl;
+	std::cin >> input;
+	if (input.empty())
+		return (EXIT_FAILURE);
+	std::cout << "First, "<<input<<" will be allocated dynamically in the heap" std::endl;
+	Zombie	*n_zombie = newZombie(input);
+	std::cout << "Now, "<<input<<" will be allocated statically in the stack" std::endl;
+	randomChump(input);
+	return (EXIT_SUCCESS);
 }
-
-void	randomChump(std::string name) {
-	Zombie	n_zombie;
-	std::cout << name << std::endl;
-	n_zombie.announce();
-	n_zombie.change_name(name);
-}
-
-/*
-Zombie* newZombie( std::string name );
-It creates a zombie, name it, and return it so you can use it outside of the function
-scope.
-• void randomChump( std::string name );
-It creates a zombie, name it, and the zombie announces itself
-*/

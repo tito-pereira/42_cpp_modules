@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/31 00:43:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/07/31 00:43:45 by marvin           ###   ########.fr       */
+/*   Created: 2024/07/31 00:43:57 by marvin            #+#    #+#             */
+/*   Updated: 2024/07/31 00:43:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
-Zombie::Zombie(false) : flag(false) {}
+#include <iostream>
+#include <cstdlib>
 
-Zombie::~Zombie() {
-	std::cout << "will die now" << name << std::endl;
-	if (flag == true)
-		delete this->name;
-}
+class Zombie
+{
+private:
+    std::string name;
+public:
+    Zombie();
+    ~Zombie();
+	void	announce(void);
+	void	change_name(std::string new_name);
+};
 
-void	Zombie::announce(void) {
-	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+Zombie*	newZombie(std::string name);
+void	randomChump(std::string name);
 
-void	Zombie::change_name(std::string new_name) {
-	this->name = new_name;
-}
+#endif
