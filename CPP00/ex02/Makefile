@@ -21,7 +21,7 @@ CPPSTD= -std=c++98
 RM= rm -rf
 
 # Source && Object files
-SRC= ./src/Account.cpp ./src/tests.cpp
+SRC= Account.cpp tests.cpp
 OBJDIR= ./obj
 OBJ= ${SRC:%.cpp=$(OBJDIR)/%.o}
 
