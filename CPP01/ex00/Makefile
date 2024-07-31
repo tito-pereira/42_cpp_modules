@@ -21,7 +21,7 @@ CPPSTD= -std=c++98
 RM= rm -rf
 
 # Source && Object files
-SRC= ./main.cpp ./Zombie.cpp
+SRC= ./src/main.cpp ./src/newZombie.cpp ./src/randomChump.cpp ./src/Zombie.cpp
 OBJDIR= ./obj
 OBJ= ${SRC:%.cpp=$(OBJDIR)/%.o}
 

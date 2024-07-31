@@ -15,8 +15,8 @@
 Zombie::Zombie() {}
 
 Zombie::~Zombie() {
-	std::cout << this->name << "will die now" << std::endl;
-	delete	this;
+	std::cout << "Dinamically allocated " << this->name << " will die now" << std::endl;
+	//delete	this;
 }
 
 void	Zombie::announce(void) {
@@ -25,4 +25,8 @@ void	Zombie::announce(void) {
 
 void	Zombie::change_name(std::string new_name) {
 	this->name = new_name;
+}
+
+std::string		Zombie::get_name(void) {
+	return this->name;
 }

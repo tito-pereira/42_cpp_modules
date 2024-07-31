@@ -14,8 +14,8 @@
 
 void	randomChump(std::string name) {
 	Zombie	n_zombie;
-	std::cout << name << std::endl;
+	std::cout << name << std::flush;
     n_zombie.change_name(name);
 	n_zombie.announce();
-    std::cout << n_zombie.name << "will die now" << std::endl;
+    std::cout << "Statically allocated " << n_zombie.get_name() << " will die now" << std::endl;
 }
