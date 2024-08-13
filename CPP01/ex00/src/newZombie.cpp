@@ -14,7 +14,8 @@
 
 Zombie*	newZombie(std::string name) {
 	Zombie	*n_zombie = new Zombie;
-	std::cout << name << std::flush;
+	n_zombie->change_status(false);
     n_zombie->change_name(name);
+	std::cout << name << std::flush;
 	return n_zombie;
 }

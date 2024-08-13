@@ -19,12 +19,13 @@ int	main() {
 	std::cin >> input;
 	if (input.empty())
 		return (EXIT_FAILURE);
-	std::cout << "First, "<<input<<" will be allocated dynamically in the heap" << std::endl;
+	std::cout << "\nFirst, "<<input<<" will be allocated dynamically in the heap" << std::endl;
 	Zombie	*n_zombie = NULL;
 	n_zombie = newZombie(input);
 	n_zombie->announce();
-	delete	n_zombie;
-	std::cout << "Now, "<<input<<" will be allocated statically in the stack" << std::endl;
+	std::cout << "\nNow, "<<input<<" will be allocated locally in the stack" << std::endl;
 	randomChump(input);
+	std::cout << std::endl;
+	delete	n_zombie;
 	return (EXIT_SUCCESS);
 }

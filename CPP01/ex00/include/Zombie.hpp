@@ -20,12 +20,13 @@ class Zombie
 {
 private:
     std::string name;
+    bool    local;
 public:
     Zombie();
     ~Zombie();
-	void	        announce(void);
-	void	        change_name(std::string new_name);
-    std::string     get_name(void);
+	void	announce(void);
+	void	change_name(std::string new_name);
+    void	change_status(bool status);
 };
 
 Zombie*	newZombie(std::string name);
