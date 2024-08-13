@@ -10,26 +10,30 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME= ???
+NAME= this_is_brain
 
-# Compilation
+# Compilation && Tools
 CPP= c++
 CFLAGS= -Wall -Wextra -Werror
 CPPSTD= -std=c++98
-
-# Tools
 RM= rm -rf
 
+# Color Codes
+RED= \e[31m
+GREEN= \e[32m
+BLUE= \e[34m
+WHITE= \e[37m
+
 # Source && Object files
-SRC= ./main.cpp ./Zombie.cpp ./zombieHorde.cpp
+SRC= ./src/main.cpp
 OBJDIR= ./obj
-OBJ= ${SRC:%.cpp=$(OBJDIR)/%.o}
+OBJ= $(SRC:%.cpp=$(OBJDIR)/%.o)
 
 .PHONY: all clean fclean re
 
 $(NAME): $(OBJ)
 	@$(CPP) $(CFLAGS) $(CPPSTD) $(OBJ) -o $(NAME)
-	@echo -n "Executable has been compiled\n"
+	@echo "$(BLUE)this_is_brain: $(GREEN)program has been compiled\n$(WHITE)"
 
 $(OBJDIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -39,10 +43,10 @@ all: $(NAME)
 
 clean:
 	@$(RM) $(OBJDIR)
-	@echo -n "All objects files and directory cleaned\n"
+	@echo "$(BLUE)this_is_brain: $(GREEN)objects files and directory cleaned\n$(WHITE)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo -n "All objects files, directory and executable cleaned\n"
+	@echo "$(BLUE)this_is_brain: $(GREEN)executable cleaned\n$(WHITE)"
 
 re: fclean all
