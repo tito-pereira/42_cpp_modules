@@ -10,3 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
+
+#include <iostream>
+#include <cstdlib>
+#include <string>
+
+class Zombie
+{
+private:
+    std::string name;
+    bool    	local;
+public:
+    Zombie();
+    ~Zombie();
+	void	announce(void);
+	void	change_name(std::string new_name);
+    void	change_status(bool status);
+};
+
+Zombie* zombieHorde(int N, std::string name);
+
+#endif
