@@ -18,20 +18,11 @@
 class HumanA {
 	private:
 		std::string	name;
-		Weapon		gun;
+		Weapon		&gun;
 	public:
 		void	attack();
-		HumanA(std::string n_name, Weapon n_gun);
+		HumanA(std::string n_name, Weapon &n_gun);
 		~HumanA();
 };
-
-/*
-HumanA bob("Bob", club);
-HumanA class:
-. Weapon (constructor)
-. Name (constructor)
-. attack()
-<name> attacks with their <weapon type>
-*/
 
 #endif

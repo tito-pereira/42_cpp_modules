@@ -17,22 +17,13 @@
 
 class HumanB {
 	private:
-		Weapon		gun;
 		std::string	name;
+		Weapon		*gun;
 	public:
 		void	attack();
-		void	setWeapon(Weapon new_type);
+		void	setWeapon(Weapon &new_type);
 		HumanB(std::string n_name);
 		~HumanB();
 };
-
-/*
-HumanB class:
-. Weapon
-. Name (constructor)
-. attack()
-. setWeapon()
-<name> attacks with their <weapon type>
-*/
 
 #endif

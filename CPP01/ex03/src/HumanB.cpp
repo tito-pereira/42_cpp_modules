@@ -12,14 +12,14 @@
 
 #include "../include/HumanB.hpp"
 
-HumanB::HumanB(std::string n_name) : name(n_name) {}
+HumanB::HumanB(std::string n_name) : name(n_name) , gun(NULL) {}
 
 HumanB::~HumanB() {}
 
-void	HumanB::setWeapon(Weapon new_type) {
-	this->gun.setType(new_type.getType());
+void	HumanB::setWeapon(Weapon &new_type) {
+	this->gun = &new_type;
 }
 
 void	HumanB::attack() {
-	std::cout << this->name << " attacks with their " << this->gun.getType() << std::endl;
+	std::cout << this->name << " attacks with their " << this->gun->getType() << std::endl;
 }

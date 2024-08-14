@@ -34,11 +34,25 @@ int main()
 }
 
 /*
-If your implementation is correct, executing the following code will print:
-. an attack with "crude spiked club"
-. then a second attack with "some other type of club" for both test cases
 
-In which case do you think it would be best to use a pointer to
-Weapon? And a reference to Weapon? Why? Think about it before
-starting this exercise.
+					| Reference vs Pointer |
+
+- A reference is not a data type in itself and instead an alias to
+an already existing / declared variable.
+Therefore, it cannot be NULL initialized and must be directly assigned
+an existing value / address as soon as it is declared or initialized.
+For that reason, the "Weapon" class inside the "HumanA" class is a
+reference because i can directly initialize it with the "HumanA"
+constructor initialization list.
+
+- The traditional pointer is a data type in itself and, because of that,
+does not need an instant value and can be NULL initialized.
+For that reason, the "Weapon" class inside the "HumanB" class is a
+NULL initialized pointer which can either be later changed with the
+"setWeapon()" function, or not be changed at all
+
+tl;dr:
+"Weapon" inside "HumanA" is a REFERENCE.
+"Weapon" inside "HumanA" is a POINTER.
+
 */
