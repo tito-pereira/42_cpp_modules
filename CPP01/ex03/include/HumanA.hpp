@@ -15,17 +15,18 @@
 
 #include "Weapon.hpp"
 
-class HumanB {
+class HumanA {
 	private:
-		Weapon		gun;
 		std::string	name;
+		Weapon		gun;
 	public:
 		void	attack();
-		HumanB(n_gun, n_name);
-		~HumanB();
-}
+		HumanA(std::string n_name, Weapon n_gun);
+		~HumanA();
+};
 
 /*
+HumanA bob("Bob", club);
 HumanA class:
 . Weapon (constructor)
 . Name (constructor)

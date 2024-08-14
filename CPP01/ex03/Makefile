@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME= --
+NAME= weapon
 
 # Compilation && Tools
 CPP= c++
@@ -25,7 +25,7 @@ BLUE= \e[34m
 WHITE= \e[37m
 
 # Source && Object files
-SRC= --
+SRC= ./src/HumanA.cpp ./src/HumanB.cpp ./src/Weapon.cpp ./src/main.cpp
 OBJDIR= ./obj
 OBJ= $(SRC:%.cpp=$(OBJDIR)/%.o)
 
@@ -33,7 +33,7 @@ OBJ= $(SRC:%.cpp=$(OBJDIR)/%.o)
 
 $(NAME): $(OBJ)
 	@$(CPP) $(CFLAGS) $(CPPSTD) $(OBJ) -o $(NAME)
-	@echo "$(BLUE)zombieHorde: $(GREEN)program has been compiled$(WHITE)"
+	@echo "$(BLUE)weapon: $(GREEN)program has been compiled$(WHITE)"
 
 $(OBJDIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
@@ -43,10 +43,10 @@ all: $(NAME)
 
 clean:
 	@$(RM) $(OBJDIR)
-	@echo "$(BLUE)zombieHorde: $(GREEN)objects files and directory cleaned$(WHITE)"
+	@echo "$(BLUE)weapon: $(GREEN)objects files and directory cleaned$(WHITE)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(BLUE)zombieHorde: $(GREEN)executable cleaned$(WHITE)"
+	@echo "$(BLUE)weapon: $(GREEN)executable cleaned$(WHITE)"
 
 re: fclean all

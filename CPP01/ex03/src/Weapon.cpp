@@ -11,3 +11,20 @@
 /* ************************************************************************** */
 
 #include "../include/Weapon.hpp"
+
+Weapon::Weapon() {
+	this->type = "";
+}
+
+Weapon::Weapon(std::string name) : type(name) {}
+
+Weapon::~Weapon() {}
+
+const std::string&	Weapon::getType() const {
+	const std::string &ref = this->type;
+	return ref;
+}
+
+void	Weapon::setType(std::string new_type) {
+	this->type = new_type;
+}

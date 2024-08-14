@@ -21,9 +21,10 @@ class HumanB {
 		std::string	name;
 	public:
 		void	attack();
-		HumanB(n_name);
+		void	setWeapon(Weapon new_type);
+		HumanB(std::string n_name);
 		~HumanB();
-}
+};
 
 /*
 HumanB class:
