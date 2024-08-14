@@ -1,0 +1,6 @@
+So in this file i will write some random text, with the goal
+of testing my "replacer" program. Because in this file, i will repeat
+the expresssion "in this file" several times and will try to replace it
+with "RIGHT HERE". I can also try another test of replacing "file" with
+"PAGE", and put it in capital letters to better watch visually the results.
+Also, one last "in this file" for good measure.
