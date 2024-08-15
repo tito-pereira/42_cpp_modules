@@ -13,12 +13,18 @@
 #include "../include/replacer.hpp"
 
 bool	arg_check(char **argv) {
-	std::fstream inFile(argv[2]);
-	if (!inFile)
+	std::ifstream	inFile(argv[1]);
+	if (!inFile) {
+		std::cerr << "Invalid file." << std::endl;
 		return false;
+	}
 	inFile.close();
-	if (!argv[3] || !argv[4])
+
+	if (!argv[2] || !argv[3]) {
+		std::cerr << "Invalid arguments." << std::endl;
 		return false;
+	}
+	
 	return true;
 }
 
@@ -26,7 +32,7 @@ char	*create_outfname(char *file) {
 	int len = 0, i = -1;
 	while (file[++i])
 		len++;
-	char	*outfile = new char[len];
+	char	*outfile = new char[len + 9];
 	
 	for (int i = 0; file[i] != '\0'; i++)
 		outfile[i] = file[i];
@@ -45,14 +51,12 @@ bool	lexer(std::string buffer, char *s1, int &i) {
 		tmp_i++;
 		a++;
 		if (s1[a] == '\0') {
-			i = tmp_i;
+			i = tmp_i - 1;
 			return true;
 		}
 	}
 	return false;
 }
-
-// ajustar valores de index
 
 int	main(int argc, char **argv) {
 	
@@ -60,44 +64,25 @@ int	main(int argc, char **argv) {
 		std::cerr << "Invalid number of arguments." << std::endl;
 		return EXIT_FAILURE;
 	}
-	else if (arg_check(argv) == false) {
-		std::cerr << "Invalid file or arguments." << std::endl;
+	else if (arg_check(argv) == false)
 		return EXIT_FAILURE;
-	}
 	
-	std::string	buffer;
-	std::ifstream inFile(argv[2]);
-	inFile >> buffer;
+	std::string	line, buffer;
+	std::ifstream	inFile(argv[1]);
+	while (std::getline(inFile, line))
+		buffer += line;
 	inFile.close();
 	
-	char	*outname = create_outfname(argv[2]); //create outfile name .replace
+	char	*outname = create_outfname(argv[1]);
 	std::ofstream outFile(outname);
 	for (int i = 0; buffer[i] != '\0'; i++) {
-		if (lexer(buffer, argv[3], i) == true)
-			outFile << argv[4] << std::flush; //write / flush s2 into file.replace
+		if (lexer(buffer, argv[2], i) == true)
+			outFile << argv[3] << std::flush;
 		else
-			outFile << buffer[i] << std::flush; //write / flush buffer[i] into file.replace
+			outFile << buffer[i] << std::flush;
 	}
-	outFile << std::endl; //write // endl into file.replace
+	outFile << std::endl;
 	outFile.close();
 	delete[] outname;
 	return EXIT_SUCCESS;
 }
-
-/*
-V argc, argv
-V read from file
-V write to file (flush, end)
-V open file
-V create file (automatico com ofstream)
-
-std::ifstream / ofstream / fstream <FD_Name>(”Name.txt”);
-<FD_Name> << “write to location” << std::endl;
-<FD_Name> >> buffer; (read from location)
-std::getline(<FD_Name>, buffer)
-<FD_Name>.seekg(0);
-<FD_Name>.close();
-
-- memory allocation?
-- utilities inside std::string?
-*/
